@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctor Directory | HealTech</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <nav>
+    <div class="nav-logo">HealTech</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="child.html">Children</a></li>
+      <li><a href="teen_adult.html">Teenagers & Adults</a></li>
+      <li><a href="seniors.html">Senior Citizens</a></li>
+      <li><a href="doctors.html">Doctors</a></li>
+      <li><a href="consultation.html">Consultation</a></li>
+      <li><a href="nutrition.html">Nutrition</a></li>
+      <li><a href="about.html">About Us</a></li>
+    </ul>
+    <button class="theme-toggle" aria-label="Toggle Theme">🌙 Dark Mode</button>
+  </nav>
+
+  <div class="container" style="width: 95%;">
+    <h1>Doctor Directory</h1>
+    <input type="text" id="searchInput" class="search-box" placeholder="Search by name or field..." onkeyup="filterTable()" >
+
+    <table id="doctorTable">
+      <thead>
+        <tr>
+          <th onclick="sortTable(0)" style="cursor:pointer">Field of Expertise</th>
+          <th onclick="sortTable(1)" style="cursor:pointer">Doctor Name</th>
+          <th onclick="sortTable(2)" style="cursor:pointer">Phone Number</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Pediatrics</td><td>Dr. Aaditya</td><td>9876213401</td></tr>
+        <tr><td>Cardiology</td><td>Dr. Anand</td><td>9083579459</td></tr>
+        <tr><td>ENT</td><td>Dr. Saamya</td><td>9083579458</td></tr>
+        <tr><td>Dental</td><td>Dr. Mohit</td><td>8097389047</td></tr>
+        <tr><td>General</td><td>Dr. Zishan</td><td>9201935890</td></tr>
+        <tr><td>Homeopathy</td><td>Dr. Aditi</td><td>9297482074</td></tr>
+        <tr><td>Vaccination</td><td>Dr. Abhinav</td><td>8838743917</td></tr>
+        <tr><td>Neurology</td><td>Dr. Ishita</td><td>9012738291</td></tr>
+        <tr><td>Orthopedics</td><td>Dr. Rahul</td><td>9023847283</td></tr>
+        <tr><td>Dermatology</td><td>Dr. Priya</td><td>9348393022</td></tr>
+        <tr><td>Gynaecology</td><td>Dr. Kavya</td><td>9384758493</td></tr>
+        <tr><td>Psychiatry</td><td>Dr. Veer</td><td>9019473829</td></tr>
+        <tr><td>Urology</td><td>Dr. Arjun</td><td>9382736451</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="scripts.js" defer></script>
+  <script>
+    function filterTable() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const rows = document.querySelectorAll('#doctorTable tbody tr');
+      rows.forEach(row => {
+        const text = row.innerText.toLowerCase();
+        row.style.display = text.includes(input) ? '' : 'none';
+      });
+    }
+
+    function sortTable(colIndex) {
+      const table = document.getElementById("doctorTable");
+      let rows = Array.from(table.rows).slice(1);
+      const isAsc = table.dataset.sort === "asc";
+      rows.sort((a, b) => {
+        const cellA = a.cells[colIndex].innerText.toLowerCase();
+        const cellB = b.cells[colIndex].innerText.toLowerCase();
+        return (isAsc ? -1 : 1) * cellA.localeCompare(cellB);
+      });
+      table.dataset.sort = isAsc ? "desc" : "asc";
+      const tbody = table.querySelector('tbody');
+      rows.forEach(row => tbody.appendChild(row));
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Senior Health | HealTech</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <nav>
+    <div class="nav-logo">HealTech</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="child.html">Children</a></li>
+      <li><a href="teen_adult.html">Teenagers & Adults</a></li>
+      <li><a href="seniors.html">Senior Citizens</a></li>
+      <li><a href="doctors.html">Doctors</a></li>
+      <li><a href="consultation.html">Consultation</a></li>
+      <li><a href="nutrition.html">Nutrition</a></li>
+      <li><a href="about.html">About Us</a></li>
+    </ul>
+    <button class="theme-toggle" aria-label="Toggle Theme">🌙 Dark Mode</button>
+  </nav>
+
+  <div class="container">
+    <h1>Senior Citizen Diagnosis</h1>
+    <p>Please enter your recent health readings:</p>
+    <form onsubmit="event.preventDefault(); diagnose();">
+      <label for="bps">Blood Pressure (Systolic)</label>
+      <input type="number" id="bps" placeholder="e.g., 120" required />
+      
+      <label for="bpd">Blood Pressure (Diastolic)</label>
+      <input type="number" id="bpd" placeholder="e.g., 80" required />
+
+      <label for="heartRate">Heart Rate (bpm)</label>
+      <input type="number" id="heartRate" placeholder="e.g., 72" required />
+
+      <button type="submit">Diagnose</button>
+    </form>
+
+    <div id="result" class="result" style="display: none;"></div>
+  </div>
+
+  <footer>
+    © 2025 HealTech. All rights reserved.
+  </footer>
+
+  <script src="scripts.js" defer></script>
+  <script>
+    function diagnose() {
+      const bps = parseInt(document.getElementById("bps").value);
+      const bpd = parseInt(document.getElementById("bpd").value);
+      const hr = parseInt(document.getElementById("heartRate").value);
+      let advice = "";
+
+      if (bps < 90 || bpd < 60) {
+        advice += "• Low blood pressure detected.<br>";
+      } else if (bps > 140 || bpd > 90) {
+        advice += "• High blood pressure detected.<br>";
+      } else {
+        advice += "• Blood pressure is normal.<br>";
+      }
+
+      if (hr < 60) {
+        advice += "• Bradycardia (low heart rate) observed.<br>";
+      } else if (hr > 100) {
+        advice += "• Tachycardia (high heart rate) observed.<br>";
+      } else {
+        advice += "• Heart rate is normal.<br>";
+      }
+
+      advice += "<br><strong>Recommendation:</strong> Schedule a consultation with a healthcare provider.";
+      
+      const resultDiv = document.getElementById("result");
+      resultDiv.innerHTML = advice;
+      resultDiv.style.display = 'block';
+    }
+  </script>
+</body>
+
+</html>

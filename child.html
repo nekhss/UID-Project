@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Children | HealTech</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <nav>
+    <div class="nav-logo">HealTech</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="child.html">Children</a></li>
+      <li><a href="teen_adult.html">Teenagers & Adults</a></li>
+      <li><a href="seniors.html">Senior Citizens</a></li>
+      <li><a href="doctors.html">Doctors</a></li>
+      <li><a href="consultation.html">Consultation</a></li>
+      <li><a href="nutrition.html">Nutrition</a></li>
+      <li><a href="about.html">About Us</a></li>
+    </ul>
+    <button class="theme-toggle" aria-label="Toggle Theme">🌙 Dark Mode</button>
+  </nav>
+
+  <main class="container" style="width: 95%;">
+    <section>
+      <h2>🩺 Vaccine Schedule</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Age</th>
+            <th>Vaccine</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>At Birth</td>
+            <td>BCG, OPV</td>
+            <td><input type="checkbox"></td>
+          </tr>
+          <tr>
+            <td>6 Weeks</td>
+            <td>DTP, IPV, Hep B</td>
+            <td><input type="checkbox"></td>
+          </tr>
+          <tr>
+            <td>10 Weeks</td>
+            <td>DTP, Hib</td>
+            <td><input type="checkbox"></td>
+          </tr>
+          <tr>
+            <td>14 Weeks</td>
+            <td>DTP, Rotavirus</td>
+            <td><input type="checkbox"></td>
+          </tr>
+          <tr>
+            <td>9 Months</td>
+            <td>MMR</td>
+            <td><input type="checkbox"></td>
+          </tr>
+        </tbody>
+      </table>
+      <button onclick="submitVaccine()">Submit Vaccine Status</button>
+    </section>
+
+    <section>
+      <h2>🍎 Nutrition Plans</h2>
+      <div class="plan">
+        <h3>Malnutrition</h3>
+        <ul>
+          <li>High-calorie meals</li>
+        </ul>
+      </div>
+      <div class="plan">
+        <h3>Obesity</h3>
+        <ul>
+          <li>Balanced diet plan</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>📞 Book Consultation</h2>
+      <form onsubmit="event.preventDefault(); alert('Appointment requested!');">
+        <label for="name">Child's Name</label><input id="name" required>
+        <label for="age">Age</label><input id="age" type="number" min="0" max="12" required>
+        <label for="issue">Concern</label><textarea id="issue"></textarea>
+        <label for="doctor">Select Doctor</label>
+        <select id="doctor">
+          <option>Dr. Aaditya</option>
+        </select>
+        <button type="submit">Request Appointment</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 HealTech. All rights reserved.
+  </footer>
+
+  <script src="scripts.js" defer></script>
+  <script>
+    function submitVaccine() {
+      alert("✅ Vaccine record submitted successfully.");
+    }
+  </script>
+</body>
+
+</html>

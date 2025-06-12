@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nutrition | HealTech</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <nav>
+    <div class="nav-logo">HealTech</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="child.html">Children</a></li>
+      <li><a href="teen_adult.html">Teenagers & Adults</a></li>
+      <li><a href="seniors.html">Senior Citizens</a></li>
+      <li><a href="doctors.html">Doctors</a></li>
+      <li><a href="consultation.html">Consultation</a></li>
+      <li><a href="nutrition.html">Nutrition</a></li>
+      <li><a href="about.html">About Us</a></li>
+    </ul>
+    <button class="theme-toggle" aria-label="Toggle Theme">🌙 Dark Mode</button>
+  </nav>
+
+  <main class="container">
+    <header>
+      <h1>Nutrition & Wellness</h1>
+    </header>
+    <h2>Get Your Diet Plan</h2>
+    <label for="ageGroup">Select Age Group:</label>
+    <select id="ageGroup" onchange="showPlan(this.value)">
+      <option value="">-- Choose --</option>
+      <option value="child">Child</option>
+      <option value="teen">Teen</option>
+      <option value="senior">Senior</option>
+    </select>
+    <div id="planResult" class="result"></div>
+  </main>
+
+  <footer>
+    © 2025 HealTech. All rights reserved.
+  </footer>
+
+  <script src="scripts.js" defer></script>
+  <script>
+    function showPlan(group) {
+      const messages = {
+        child: "Child: Baked apples, purees, whole grains, berries.",
+        teen: "Teen: Balance carbs, proteins, green veggies, fruits.",
+        senior: "Senior: Fiber, less salt, more hydration, calcium-rich."
+      };
+      document.getElementById("planResult").innerHTML = messages[group] || "";
+    }
+  </script>
+</body>
+
+</html>
